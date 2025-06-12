@@ -85,7 +85,8 @@ class _RiwayatRuanganState extends State<RiwayatRuangan> {
                       headingRowColor: WidgetStateColor.resolveWith(
                         (states) => Colors.blue.shade100,
                       ),
-                      dataRowHeight: 60,
+                      dataRowMinHeight: 60,
+                      dataRowMaxHeight: 60,
                       headingTextStyle: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
