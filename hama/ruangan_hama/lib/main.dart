@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ruangan_hama/screens/edit_ruangan.dart';
+import 'package:ruangan_hama/screens/tambah_ruangan.dart';
 import 'screens/login_page.dart';
 import 'screens/register_page.dart';
+import 'screens/daftar_ruangan.dart';
 
 void main() {
   runApp(const BookingRuanganApp());
@@ -22,7 +25,9 @@ class BookingRuanganApp extends StatelessWidget {
       routes: {
         '/': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
-     
+         '/daftar': (context) =>  DaftarRuangan(),
+         '/tambah-ruangan': (context) =>  TambahRuangan(),
+          '/edit-ruangan': (context) =>  EditRuangan(),
       },
     );
   }

@@ -19,14 +19,10 @@ class _RiwayatRuanganState extends State<RiwayatRuangan> {
 
   @override
   Widget build(BuildContext context) {
-    // Filter berdasarkan pencarian
-    final filteredData =
-        history
-            .where(
-              (item) => item.toLowerCase().contains(searchQuery.toLowerCase()),
-            )
-            .map((item) => item.split(' - '))
-            .toList();
+    final filteredData = history
+        .where((item) => item.toLowerCase().contains(searchQuery.toLowerCase()))
+        .map((item) => item.split(' - '))
+        .toList();
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
@@ -42,7 +38,7 @@ class _RiwayatRuanganState extends State<RiwayatRuangan> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Search Field di kanan atas
+            // Search Field
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -86,7 +82,7 @@ class _RiwayatRuanganState extends State<RiwayatRuangan> {
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
                       columnSpacing: 40,
-                      headingRowColor: MaterialStateColor.resolveWith(
+                      headingRowColor: WidgetStateColor.resolveWith(
                         (states) => Colors.blue.shade100,
                       ),
                       dataRowHeight: 60,
@@ -100,32 +96,27 @@ class _RiwayatRuanganState extends State<RiwayatRuangan> {
                         DataColumn(label: Text('Tanggal')),
                         DataColumn(label: Text('Status')),
                       ],
-                      rows:
-                          filteredData
-                              .map(
-                                (row) => DataRow(
-                                  cells: [
-                                    DataCell(Text(row[0])),
-                                    DataCell(Text(row[1])),
-                                    DataCell(
-                                      Text(
-                                        row.length > 2
-                                            ? row[2]
-                                            : 'Tidak diketahui',
-                                        style: TextStyle(
-                                          color:
-                                              (row.length > 2 &&
-                                                      row[2] == 'Selesai')
-                                                  ? Colors.green
-                                                  : Colors.red,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
+                      rows: filteredData
+                          .map(
+                            (row) => DataRow(
+                              cells: [
+                                DataCell(Text(row[0])),
+                                DataCell(Text(row[1])),
+                                DataCell(
+                                  Text(
+                                    row.length > 2 ? row[2] : 'Tidak diketahui',
+                                    style: TextStyle(
+                                      color: (row.length > 2 && row[2] == 'Selesai')
+                                          ? Colors.green
+                                          : Colors.red,
+                                      fontWeight: FontWeight.w600,
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              )
-                              .toList(),
+                              ],
+                            ),
+                          )
+                          .toList(),
                     ),
                   ),
                 ),
